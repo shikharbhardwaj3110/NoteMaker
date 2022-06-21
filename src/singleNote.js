@@ -3,24 +3,27 @@ import './App.css'
 
 function SingleNote(props) {
 
+    const alternatingColor = ['#d6d6d6', 'white']
+
     const divStyle = {
         textAlign: 'left',
         padding: '2.5rem',
-        paddingTop : '0'
+        paddingTop: '0'
     }
 
     const spanStyle = {
         fontSize: '1.5rem',
-        fontFamily: 'cursive'
+        fontFamily: 'font-family: Verdana, Arial, Helvetica, sans-serif;',
+        marginLeft: '1rem'
     }
 
     const noteDivStyle = {
         marginTop: '1rem',
-        wordWrap: 'break-word'
+        wordWrap: 'break-word',
     }
 
     const hrStyle = {
-        marginTop: '1rem'
+        marginTop: '1.2rem'
     }
 
     const deleteButtonStyle = {
@@ -42,13 +45,14 @@ function SingleNote(props) {
             {props.notes.map((note, index) => {
                 console.log("Note ", index + 1, " : ", note[0])
                 return (
-                    <div style={noteDivStyle} key={index}>
-                        <span style={spanStyle} >{note[0]}</span>
-                        <div style={{ textAlign: 'center', marginTop: '1.7rem' }}>
-                            <i><span style={{fontSize : '13px', fontFamily : 'sans-serif', color : '#6d6e6e'}}> Created at {note[1]}</span></i>
+                    <div style={{marginTop : '0rem',wordWrap: 'break-word', backgroundColor : alternatingColor[index % alternatingColor.length] }}   key={index}>
+                        <div style={{ textAlign: 'left', marginTop: '0px', marginLeft: '1rem', display: 'flex' }}>
+                            <span style={{ fontSize: '0.7rem', fontFamily: 'sans-serif', color: '#6d6e6e' }}><img src="../clock.png" width="10" />&nbsp; Created at {note[1]}</span>
                         </div>
+                        <span style={spanStyle} >{note[0]}</span>
                         <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-                            <button style={deleteButtonStyle} onClick={() => { filterNotes(index) }}>Delete</button>
+                            <button type="button" class="btn btn-outline-secondary" style={{marginRight : '0.5rem'}}>Edit</button>
+                            <button class="btn btn-outline-danger" onClick={() => { filterNotes(index) }}>Delete</button>
                         </div>
                         <hr style={hrStyle}></hr>
                     </div>

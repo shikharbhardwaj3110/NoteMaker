@@ -6,9 +6,10 @@ import AllNotes from './AllNotes';
 function App() {
   return (
     <div>
-      <Header heading="Note Making App"></Header>
+      <Header heading="Note Maker"></Header>
       <AllNotes></AllNotes>
       <Footer heading="Make your notes on the go"></Footer>
+      
     </div>
   );
 }
